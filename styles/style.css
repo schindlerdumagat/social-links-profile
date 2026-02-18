@@ -16,11 +16,6 @@ html {
   text-size-adjust: none;
 }
 
-/* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, p {
-  margin-block-end: 0;
-}
-
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'] {
   list-style: none;
@@ -117,6 +112,10 @@ img{
   --rounded-sm: 12px;
   --rounded-xs: 8px;
 
+  /* QUOTES */
+
+  --quotes: "“" "”";
+
 }
 
 body {
@@ -129,6 +128,7 @@ body {
   line-height: 1.5;
   color: var(--clr-white);
   min-height: 100vh;
+  min-height: 100dvh;
   padding: var(--space-300);
 }
 
@@ -146,9 +146,11 @@ body {
 }
 
 .card__img {
-  width: 88px;
+  width: min(100%, 88px);
+  aspect-ratio: 1 / 1;
   height: auto;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .card__name {
@@ -162,6 +164,10 @@ body {
   font-style: normal;
   color: var(--clr-green);
   text-align: center;
+}
+
+.card__description {
+  quotes: var(--quotes);
 }
 
 .card__description::before {
@@ -182,14 +188,14 @@ body {
 .card__social-link {
   font-weight: 700;
   text-decoration: none;
-  color: var(--white);
+  color: var(--clr-white);
   display: block;
   text-align: center;
   padding: var(--space-150);
   border-radius: var(--rounded-xs);
   background-color: var(--clr-grey-700);
   cursor: pointer;
-  transition: 500ms color, 500ms background-color;
+  transition: 300ms color ease, 300ms background-color ease;
 }
 
 .card__social-link:hover {
